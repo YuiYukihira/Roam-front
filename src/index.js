@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 import Post from './Post';
+import Filter from './Filter';
 
+
+ReactDOM.render(<Filter />, document.getElementById('sort-dropdown'));
 ReactDOM.render(
 [
     Post('/GlennSquare.jpg', 'An example post', 'Hello', '2.4k', '5.6k', false),
