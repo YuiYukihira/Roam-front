@@ -1,29 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
+* {
+    font-family: 'Fira Sans', monospace;
+}
+
 #content-sidebar-holder {
+    height: calc(100vh - 151px);
     display: flex;
+    flex-grow: 1;
 }
 
 #content {
-    width: 80vw;
+    flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+#content::-webkit-scrollbar {
+    display: none;
 }
 
 #sidebar {
-    width: auto;
+    margin: 0;
+    width: 20vw;
+    background-color: rgba(255,255,255,0.1);
+    display: flex;
+    position: absolute;
+    height: calc(100vh - 151px);
+    justify-content: space-between;
+    right: 0;
+}
+
+#subreddits {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 5px;
+    width: 10%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#subreddits::-webkit-scrollbar {
+    display: none;
+}
+
+#subreddits > img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+#sideextras {
+    flex-grow: 1;
 }
 
 html {
-    background-color: #222222;
+    background-color: #222;
     color: #dddddd;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 #logo {
-    width: 5vw;
-    height: 5vw;
+    height: 100px;
 }
 
 #topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: rgba(255,255,255,0.1);
+}
+
+#topbar > div {
+    margin-right: 10px;
+}
+
+#extrabar {
+    display: flex;
+    background-color: rgba(255,255,255,0.1);
+    border-top: 1px solid black;
+    height: 50px;
+}
+
+#extrabar > * {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 #subreddit-button {
@@ -35,40 +103,98 @@ html {
 }
 
 #newsbar {
-    margin: 0 0 0 5px;
+    padding: 2px 0 2px 5px;
     width: auto;
+    background-color: black;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#newsbar > div {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    /* Starting position */
+    -moz-transform:  translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    /* Apply animation to this element */
+    -moz-animation: scroll-left 15s linear infinite;
+    -webkit-animation: scroll-left 15s linear infinite;
+    animation: scroll-left 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-left {
+    0% { -moz-transform: translateX(100%); }
+    100% { -moz-transform: translateX(-100%);}
+}
+
+@-webkit-keyframes scroll-left {
+    0% { -webkit-transform: translateX(100%);}
+    100% {-webkit-transform: translateX(-100%);}
+}
+
+@keyframes scroll-left {
+    0% { -webkit-transform: translateX(100%);}
+    100% { -webkit-transform: translateX(-100%);}
 }
 
 .post {
-    margin: 5% 5%;
-    padding: 2% 2%;
-    background-color: rgba(255,255,255, 0.1);
-    border-radius: 15px;
-    max-height: 323px;
+    margin: 15px 8px;
+    box-shadow: 2px 2px 5px #35006985;
+    margin-right: calc(20vw + 16px);
+    border-radius: 5px;
+}
+
+.post > .post-body {
+    max-height: 255px;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.post-body.fade-away {
+    mask-image: linear-gradient(180deg, #000, transparent);
+}
+.post > .post-body > img {
+    display: block;
+    max-width: 100%;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.post > .post-meta {
+    border-radius: 5px 5px 0 0;
+    background-color: rgba(255,255,255,0.2 );
+}
+
+.post > .post-options {
+    background-color: rgba(255,255,255,0.2);
+    margin: 0;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    align-items: center;
+}
+
+.post > div {
+    background-color: rgba(255,255,255,0.1);
+    padding: 5px;
+}
+
+.post-options > div {
+    margin: 0 2px;
 }
 
 .post-meta {
-    width: 100%;
-    margin: 0px 5px 5px 0px;
+    height: 19px;
     display: flex;
-    align-items: center;
-    border-radius: 5px;
 }
 
 .post-meta > img {
-    width: 5%;
-    margin: 0 5px 0 0;
-    border-radius: 5px;
+    height: 100%;
+    border-radius: 50%;
 }
 
-.post-content {
-    margin: 0 auto 0 0;
-    max-height: 89%;
-    overflow: hidden;
-    border-radius: 5px;
-}
-
-.post-content > img {
-    width: 70%;
-    border-radius: 5px;
+.post-meta > div {
+    margin-left: 5px;
 }
