@@ -16,6 +16,13 @@
     animation: $property;
 }
 
+@mixin transition($property) {
+    -webkit-transition: $property;
+    -moz-transition: $property;
+    -o-transition: $property;
+    transition: $property;
+}
+
 $body-color: $gray-300;
 $body-bg: $gray-900;
 $font-family-sans-serif: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -30,9 +37,42 @@ $content-height: subtract(subtract(100vh, $topbar-height), $extrabar-height);
 
 
 
-#content-sidebar-holder {
+#content-sidebar-holder > div {
     height: $content-height;
     display: flex;
+}
+
+.content-thin {
+    width: subtract(100vw, $sidebar-width) / 2 !important;
+}
+
+#image-display, #content{
+    @include transition(width 0.1s linear);
+}
+
+#image-display {
+    height: $content-height;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    padding: 8px;
+    right: $sidebar-width;
+    width: 0;
+}
+
+#image-display > img {
+    max-width: 100%;
+    @include transform(scaleX(0));
+    @include transition(transform 0.1s linear);
+    transform-origin: right;
+}
+
+.image-display {
+    width: subtract(100vw, $sidebar-width) / 2 !important;
+    img {
+        @include transform(scaleX(1) !important);
+    //@include animation(widthy 0.3s linear 1);
+    }
 }
 
 #content {
@@ -141,8 +181,8 @@ $content-height: subtract(subtract(100vh, $topbar-height), $extrabar-height);
 }
 
 @keyframes scroll-left {
-    0% { -webkit-transform: translateX(100%);}
-    100% { -webkit-transform: translateX(-100%);}
+    0% { transform: translateX(100%);}
+    100% { transform: translateX(-100%);}
 }
 
 .post-meta {
@@ -160,7 +200,6 @@ $content-height: subtract(subtract(100vh, $topbar-height), $extrabar-height);
 
 .post {
     margin: 15px 8px;
-    margin-right: 8px;
     box-shadow: 2px 2px 5px $black;
     border-radius: 5px;
 

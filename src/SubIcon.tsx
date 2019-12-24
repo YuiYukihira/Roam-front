@@ -10,7 +10,7 @@ export enum Placement {
     Right = "right"
 }
 
-interface SubIconProps {
+export interface SubIconProps {
     name: string,
     icon: string,
     className?: string,

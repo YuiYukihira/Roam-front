@@ -1,8 +1,50 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans&display=swap");
-#content-sidebar-holder {
+#content-sidebar-holder > div {
   height: calc(calc(100vh - 100px) - 50px);
   display: flex;
+}
+
+.content-thin {
+  width: 40vw !important;
+}
+
+#image-display, #content {
+  -webkit-transition: width 0.1s linear;
+  -moz-transition: width 0.1s linear;
+  -o-transition: width 0.1s linear;
+  transition: width 0.1s linear;
+}
+
+#image-display {
+  height: calc(calc(100vh - 100px) - 50px);
+  display: flex;
+  align-items: center;
+  position: absolute;
+  padding: 8px;
+  right: 20vw;
+  width: 0;
+}
+
+#image-display > img {
+  max-width: 100%;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: transform 0.1s linear;
+  -moz-transition: transform 0.1s linear;
+  -o-transition: transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transform-origin: right;
+}
+
+.image-display {
+  width: 40vw !important;
+}
+.image-display img {
+  -webkit-transform: scaleX(1) !important;
+  -moz-transform: scaleX(1) !important;
+  transform: scaleX(1) !important;
 }
 
 #content {
@@ -118,10 +160,10 @@
 }
 @keyframes scroll-left {
   0% {
-    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
   }
   100% {
-    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
   }
 }
 .post-meta {
@@ -137,7 +179,6 @@
 
 .post {
   margin: 15px 8px;
-  margin-right: 8px;
   box-shadow: 2px 2px 5px #000;
   border-radius: 5px;
 }
