@@ -2,11 +2,13 @@ import React from 'react';
 
 import Image from 'react-bootstrap/Image';
 
+import SubIcon from './SubIcon';
+
 function Post(subredditLogo, title, content, upvotes, comments, fade) {
     if (fade) {
         return (
             <div className="post">
-                <div className="post-meta"><Image src={subredditLogo} alt="subredditLogo" roundedCircle/><div>{title}</div></div>
+                <div className="post-meta">{SubIcon("test", subredditLogo, "", ["right", "bottom", "top", "left"])}<div>{title}</div></div>
                 <div className="post-body fade-away">{content}</div>
                 <div className="post-options">
                     <div>
@@ -22,7 +24,7 @@ function Post(subredditLogo, title, content, upvotes, comments, fade) {
     }
     return (
         <div className="post">
-            <div className="post-meta"><Image src={subredditLogo} alt="subredditLogo" roundedCircle/><div>{title}</div></div>
+            <div className="post-meta">{SubIcon("test", subredditLogo, "", ["right", "bottom", "top", "left"])}<div>{title}</div></div>
             <div className="post-body">{content}</div>
             <div className="post-options">
                 <div>

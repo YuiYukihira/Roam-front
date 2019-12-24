@@ -6,8 +6,9 @@ import Image from 'react-bootstrap/Image';
 
 import Post from './Post';
 import Filter from './Filter';
+import SubIcon from './SubIcon';
 
-
+ReactDOM.render(SubIcon("test", "/GlennSquare.jpg", 'subreddit', ["left", "right", "top", "bottom"]), document.getElementById("subreddits"));
 ReactDOM.render(<Filter />, document.getElementById('sort-dropdown'));
 ReactDOM.render(
 [

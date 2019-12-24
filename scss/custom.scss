@@ -200,4 +200,9 @@ $content-height: subtract(subtract(100vh, $topbar-height), $extrabar-height);
         }
     }
 }
+
+.subreddit {
+    width: 100%;
+}
+
 @import "../node_modules/bootstrap/scss/bootstrap";
