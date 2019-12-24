@@ -9,7 +9,8 @@
 /coverage
 
 # production
-/build
+/dist
+/public/custom.css*
 
 # misc
 .DS_Store
