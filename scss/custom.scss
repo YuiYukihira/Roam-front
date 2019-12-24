@@ -71,6 +71,7 @@ $content-height: subtract(subtract(100vh, $topbar-height), $extrabar-height);
     width: subtract(100vw, $sidebar-width) / 2 !important;
     img {
         @include transform(scaleX(1) !important);
+        width: 100%;
     //@include animation(widthy 0.3s linear 1);
     }
 }
