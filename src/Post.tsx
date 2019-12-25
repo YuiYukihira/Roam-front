@@ -21,7 +21,8 @@ export interface PostProps {
     upvotes: number,
     comments: number,
     content: PostContentInfo,
-    onClick?: (src: string) => void
+    onClick?: (src: string) => void,
+    key?: string
 }
 
 
@@ -34,29 +35,29 @@ interface PostContentInfo {
     content: string
 }
 
-export class Post extends React.Component<PostProps, string> {
+export class Post extends React.Component<PostProps, {id: string}> {
     constructor(props: PostProps) {
         super(props);
-        this.state = _.uniqueId('Post');
+        this.state = {id: _.uniqueId('Post')};
     }
 
     componentDidMount() {
-        const height = document.getElementById(this.state)?.clientHeight;
+        const height = document.getElementById(this.state.id)?.clientHeight;
         console.log(height);
         if (height != null && height >= 255) {
-            document.getElementById(this.state)?.classList.add("fade-away")
+            document.getElementById(this.state.id)?.classList.add("fade-away")
         } else {
-            document.getElementById(this.state)?.classList.remove("fade-away");
+            document.getElementById(this.state.id)?.classList.remove("fade-away");
         }
     }
 
     componentDidUpdate() {
-        const height = document.getElementById(this.state)?.clientHeight;
+        const height = document.getElementById(this.state.id)?.clientHeight;
         console.log(height);
         if (height != null && height >= 255) {
-            document.getElementById(this.state)?.classList.add("fade-away")
+            document.getElementById(this.state.id)?.classList.add("fade-away")
         } else {
-            document.getElementById(this.state)?.classList.remove("fade-away");
+            document.getElementById(this.state.id)?.classList.remove("fade-away");
         }
     }
 
@@ -77,7 +78,7 @@ export class Post extends React.Component<PostProps, string> {
             positions={[Placement.Right, Placement.Bottom, Placement.Top, Placement.Left]}
             />
         </div>
-        <div id={this.state} className="post-body">
+        <div id={this.state.id} className="post-body">
             {this.props.content.type===PostType.Image?<Image src={this.props.content.content} onClick={this.handleClick}/>:this.props.content.content}
         </div>
         <div className="post-options">
