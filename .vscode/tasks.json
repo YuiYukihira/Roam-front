@@ -16,9 +16,14 @@
             "problemMatcher": []
         },
         {
+            "label": "Start npm",
             "type": "npm",
             "script": "start",
             "problemMatcher": []
+        },
+        {
+            "label": "Build (Watch)",
+            "dependsOn": ["Compile (watch) SCSS", "Start npm"]
         }
     ]
 }
